@@ -20,7 +20,9 @@ function setup() {
 
 	circ.color = 'blue';
 }
-	
+	//git config --global user.name "23154ja"
+	//git config --global user.email 23154ja@hvhs.school.nz
+
 /*******************************************************/
 // draw()
 /*******************************************************/
