@@ -1,7 +1,7 @@
 /*******************************************************/
 // P5.play: t05_createWalls
 // Create walls around the canvas
-// Written by ???
+// Written by Jacob
 /*******************************************************/
 	
 /*******************************************************/
@@ -23,9 +23,10 @@ function setup() {
 
 	ball_1.vel.x = 7;
 
-	ball_1.vel.y = -15;
+	ball_1.vel.y = -10;
 
 	ball_1.bounciness = 1;
+	//bounciness < 1 removes momentum from the system, bounciness > 1 adds momentum to the system, bounciness = 1 conserves momentum
 
 	ball_1.friction = 0;
 

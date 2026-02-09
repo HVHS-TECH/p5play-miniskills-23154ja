@@ -26,7 +26,13 @@ function setup() {
 /*******************************************************/
 function draw() {
 	background('white'); 
-	
+	rect = new Sprite(200, 200, 50, 50, 'd');
+
+	rect.color = 'green';
+
+	circ = new Sprite(100, 100, 20, 'd');
+
+	circ.color = 'blue';
 }
 
 /*******************************************************/
