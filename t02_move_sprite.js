@@ -1,7 +1,7 @@
 /*******************************************************/
 // P5.play: t02_move_sprite
 // Move a sprite
-// Written by ???
+// Written by Jacob
 /*******************************************************/
 	
 /*******************************************************/
@@ -10,12 +10,26 @@
 function setup() {
 	console.log("setup: ");
 
+	cnv = new Canvas(windowWidth, windowHeight);
+
+	rect = new Sprite(200, 200, 50, 50);
+
+	rect.color = 'green';
+
+	rect.rotationSpeed = 2;
+
+	rect.vel.x = 2;
+
+	circ = new Sprite(100, 100, 20);
+
+	circ.color = 'blue';
 }
-	
+
 /*******************************************************/
 // draw()
 /*******************************************************/
 function draw() {
+	background('white'); 
 	
 }
 
