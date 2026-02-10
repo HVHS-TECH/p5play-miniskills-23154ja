@@ -33,7 +33,7 @@ function setup() {
 	ball_1.drag = 0;
 
 	
-	aliens(50);
+	aliens(25);
 
 	}
 	
@@ -67,18 +67,18 @@ function drawWalls() {
 }
 
 function aliens(n) {
+
 	for (i = 0; i < n; i++) {
 
-  alien = new Sprite(500,700,50,50, 'd');
+  alien = new Sprite(500,700,40,40, 'd');
 
-  alien.vel.x = randNum = random(4, 7) * random(-1,1);;
+  alien.vel.x = 8;
 
   alien.vel.y = 4;
 
   alien.bounciness = 1;
 
   alien.friction = 0;
-
 }
 }
 
