@@ -11,10 +11,103 @@ function setup() {
 	console.log("setup: ");
 
 	cnv = new Canvas(windowWidth, windowHeight);
+	world.gravity.y = 10;
 
-	rect = new Sprite(200, 200, 50, 50, 'd');
 
-	rect.color = 'green';
+	drawWalls();
+
+
+	ball = new Sprite(width/2, height/2, 50, 'd');
+
+	ball.color = 'cyan';
+
+	ball.vel.x = 7;
+
+	ball.vel.y = -10;
+
+	ball.bounciness = 1;
+	//bounciness < 1 removes momentum from the system, bounciness > 1 adds momentum to the system, bounciness = 1 conserves momentum
+
+	ball.friction = 0;
+
+	ball.drag = 0;
+
+	
+	aliens(25);
+
+	
+	}
+	
+function drawWalls() {
+
+
+
+	wallLH  = new Sprite(0, windowHeight/2, 8, windowHeight, 'k');
+
+	wallLH.color = 'black';
+
+
+	wallRH  = new Sprite(windowWidth, windowHeight/2, 8, windowHeight, 'k');
+
+	wallRH.color = 'green';
+
+
+	wallTop = new Sprite(windowWidth/2, 0, windowWidth, 8, 'k');
+
+	wallTop.color = 'blue';
+
+
+
+	wallBottom = new Sprite(windowWidth/2, windowHeight, windowWidth, 8, 'k');
+
+	wallBottom.color = 'red';
+
+
+	//wallBot = new Sprite(x, y, w, h, 'k');
+
+}
+
+function aliens(n) {
+
+	// Create a group for the aliens
+
+	alienGroup = new Group();
+
+	// Register a callback:
+
+	// if any alien in alienGroup collides with ball, call func2Call
+
+	alienGroup.collides(ball, kill);
+
+
+	for (i = 0; i < n; i++) {
+
+  alien = new Sprite(500,700,40,40, 'd');
+
+  alien.vel.x = 8;
+
+  alien.vel.y = 4;
+
+  alien.bounciness = 1;
+
+  alien.friction = 0;
+
+  alien.drag = 0;
+
+
+  alienGroup.add(alien);
+}
+}
+
+function kill( _ssss, _ball) {
+	//kill
+	_ssss.remove();
+
+
+	_ball.physics = 'k';
+	_ball.physics = 'd';
+// ask why this makes a difference
+
 }
 
 /*******************************************************/
@@ -22,6 +115,29 @@ function setup() {
 /*******************************************************/
 function draw() {
 	background('white'); 
+
+	ball.moveTowards(mouseX, mouseY, 0.01);
+
+	if (mouse.pressing()) {
+
+
+	let x = mouseX-2*rect.x;
+
+	if (x < 0) {
+		x=0;
+	}
+
+
+	let y = mouseY-2*rect.y;
+
+	if (x < 0) {
+		y=0;
+	}
+
+
+	ball.moveTo(x,y, 20);
+
+}
 	
 }
 
