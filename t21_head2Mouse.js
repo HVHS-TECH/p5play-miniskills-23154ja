@@ -12,40 +12,9 @@ function setup() {
 
 	cnv = new Canvas(windowWidth, windowHeight);
 
-	world.gravity.y = 3.5;
-	world.gravity.x = 3.5;
+	rect = new Sprite(200, 200, 50, 50, 'd');
 
-
-	rect1 = new Sprite(400, 200, 50, 50, 's');
-
-	rect1.color = 'green';
-
-	rect1.vel.x = 5;
-
-
-	circ1 = new Sprite(100, 200, 20, 'd');
-
-	circ1.color = 'blue';
-
-	circ1.vel.x = 9;
-
-
-	circ2 = new Sprite(400, 100, 20, 'k');
-
-	circ2.vel.y = 3;
-
-	circ2.vel.x = 0.7;
-
-	circ2.color = 'blue';
-
-
-
-	rect2 = new Sprite(350, 400, 50, 50, 'n');
-
-	rect2.color = 'green';
-
-
-	
+	rect.color = 'green';
 }
 
 /*******************************************************/
