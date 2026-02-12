@@ -10,22 +10,38 @@
 function setup() {
 	console.log("setup: ");
 
-	cnv = new Canvas(windowWidth, windowHeight);
+	width = random(300,600);
+	height = random(300,600);
 
-	rect = new Sprite(200, 200, 50, 50, 'd');
+	spriteX= random(50,150);
+	spriteY=  random(50,150);
 
-	rect.color = 'green';
+	spriteWidth = spriteX/2
+	spriteHeight = spriteY/2
 
-	circ = new Sprite(100, 100, 20, 'd');
+cnv = new Canvas(width, height);
 
-	circ.color = 'blue';
+red = new Sprite(spriteWidth, spriteHeight ,spriteX, spriteY);
+red.color = 'red';
+
+green = new Sprite( width-spriteWidth, spriteHeight ,spriteX, spriteY);
+green.color = 'green';
+
+blue = new Sprite( width-spriteWidth, height-spriteHeight , spriteX, spriteY);
+blue.color = 'blue';
+
+yellow = new Sprite( spriteWidth, height-spriteHeight , spriteX, spriteY);
+yellow.color = 'yellow';
+
+purple = new Sprite( width/2, height/2 , spriteX, spriteY);
+purple.color = 'purple';
 }
 
 /*******************************************************/
 // draw()
 /*******************************************************/
 function draw() {
-	background('white'); 
+	background('cyan'); 
 	
 }
 
