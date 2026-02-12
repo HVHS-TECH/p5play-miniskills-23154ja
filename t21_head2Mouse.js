@@ -4,6 +4,17 @@
 // Written by Jacob
 /*******************************************************/
 	
+
+	
+function preload() {
+
+  imgBG   = loadImage('../assets/images/space.jpg');
+
+  imgFace = loadImage('../assets/images/face.png');
+
+}
+
+
 /*******************************************************/
 // setup()
 /*******************************************************/
@@ -25,12 +36,16 @@ function setup() {
 
 	ball.vel.y = -10;
 
-	ball.bounciness = 1;
+	ball.bounciness = 0;
 	//bounciness < 1 removes momentum from the system, bounciness > 1 adds momentum to the system, bounciness = 1 conserves momentum
 
 	ball.friction = 0;
 
 	ball.drag = 0;
+
+	ball.image = (imgFace);
+
+	imgFace.resize(50, 50);
 
 	
 	aliens(25);
@@ -114,30 +129,24 @@ function kill( _ssss, _ball) {
 // draw()
 /*******************************************************/
 function draw() {
-	background('white'); 
+	background(imgBG);  
 
 	ball.moveTowards(mouseX, mouseY, 0.01);
 
-	if (mouse.pressing()) {
+	//if (mouse.pressing()) {
 
 
-	let x = mouseX-2*rect.x;
-
-	if (x < 0) {
-		x=0;
-	}
+	let x = mouseX-ball.x;
 
 
-	let y = mouseY-2*rect.y;
 
-	if (x < 0) {
-		y=0;
-	}
+	let y = mouseY-ball.y;
 
 
-	ball.moveTo(x,y, 20);
 
-}
+	ball.moveTo(ball.x-x,ball.y-y, 20);
+
+//}
 	
 }
 
