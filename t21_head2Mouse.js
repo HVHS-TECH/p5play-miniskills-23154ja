@@ -22,7 +22,7 @@ function setup() {
 	console.log("setup: ");
 
 	cnv = new Canvas(windowWidth, windowHeight);
-	world.gravity.y = 10;
+	//world.gravity.y = 10;
 
 
 	drawWalls();
@@ -131,9 +131,13 @@ function kill( _ssss, _ball) {
 function draw() {
 	background(imgBG);  
 
-	//ball.moveTowards(mouseX, mouseY, 0.01);
+	ball.moveTo(mouseX, mouseY, 10);
 
 
+	if (mouse.pressing()) {
+		
+	
+		console.log("mouse pressed");
 
 	let x = mouseX-ball.x;
 
@@ -145,7 +149,7 @@ function draw() {
 
 	ball.moveTowards(ball.x-x,ball.y-y, 0.05);
 
-	
+	}
 }
 
 /*******************************************************/
