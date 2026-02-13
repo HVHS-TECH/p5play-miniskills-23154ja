@@ -131,9 +131,8 @@ function kill( _ssss, _ball) {
 function draw() {
 	background(imgBG);  
 
-	ball.moveTowards(mouseX, mouseY, 0.01);
+	//ball.moveTowards(mouseX, mouseY, 0.01);
 
-	//if (mouse.pressing()) {
 
 
 	let x = mouseX-ball.x;
@@ -144,9 +143,8 @@ function draw() {
 
 
 
-	ball.moveTo(ball.x-x,ball.y-y, 20);
+	ball.moveTowards(ball.x-x,ball.y-y, 0.05);
 
-//}
 	
 }
 
