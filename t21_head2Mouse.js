@@ -48,7 +48,7 @@ function setup() {
 	imgFace.resize(50, 50);
 
 	
-	aliens(25);
+	aliens(50);
 
 	
 	}
@@ -61,15 +61,34 @@ function drawWalls() {
 
 	wallLH.color = 'black';
 
+	wallLH.bounciness = 0;
+	wallLH.friction = 0;
+	wallLH.drag = 0;
+
+
+
 
 	wallRH  = new Sprite(windowWidth, windowHeight/2, 8, windowHeight, 'k');
 
 	wallRH.color = 'green';
 
+	wallRH.bounciness = 0;
+	wallRH.friction = 0;
+	wallRH.drag = 0;
+
+
+
 
 	wallTop = new Sprite(windowWidth/2, 0, windowWidth, 8, 'k');
 
 	wallTop.color = 'blue';
+
+	wallTop.bounciness = 0;
+	wallTop.friction = 0;
+	wallTop.drag = 0;
+
+
+
 
 
 
@@ -77,7 +96,9 @@ function drawWalls() {
 
 	wallBottom.color = 'red';
 
-
+	wallBottom.bounciness = 0;
+	wallBottom.friction = 0;
+	wallBottom.drag = 0;
 	//wallBot = new Sprite(x, y, w, h, 'k');
 
 }
@@ -129,15 +150,18 @@ function kill( _ssss, _ball) {
 // draw()
 /*******************************************************/
 function draw() {
+
+
+
 	background(imgBG);  
 
-	ball.moveTo(mouseX, mouseY, 10);
+
+	ball.moveTo(mouseX, mouseY, 1);
 
 
 	if (mouse.pressing()) {
 		
 	
-		console.log("mouse pressed");
 
 	let x = mouseX-ball.x;
 
@@ -146,9 +170,8 @@ function draw() {
 	let y = mouseY-ball.y;
 
 
-
 	ball.moveTowards(ball.x-x,ball.y-y, 0.05);
-
+	
 	}
 }
 
