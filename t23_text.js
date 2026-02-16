@@ -23,7 +23,7 @@ function draw() {
     background('white');
 
 
-    text("Hello World", 50, 50) 
+    text("Hello World", 50, 50);
 
     var name = "Mr Bob";
 

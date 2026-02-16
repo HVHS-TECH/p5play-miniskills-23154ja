@@ -1,6 +1,6 @@
 /*******************************************************/
-// P5.play: t22_keyboard
-// Move sprite via keyboard
+// P5.play: t21_head2Mouse
+// Move sprite towards the mouse' position
 // Written by Jacob
 /*******************************************************/
 	
@@ -19,6 +19,7 @@ function preload() {
 // setup()
 /*******************************************************/
 function setup() {
+	frameRate(60);
 	console.log("setup: ");
 
 	cnv = new Canvas(windowWidth, windowHeight);
@@ -48,8 +49,6 @@ function setup() {
 	imgFace.resize(50, 50);
 
 	
-	aliens(50);
-
 	
 	}
 	
@@ -103,49 +102,11 @@ function drawWalls() {
 
 }
 
-function aliens(n) {
-
-	// Create a group for the aliens
-
-	alienGroup = new Group();
-
-	// Register a callback:
-
-	// if any alien in alienGroup collides with ball, call func2Call
-
-	alienGroup.collides(ball, kill);
-
-
-	for (i = 0; i < n; i++) {
-
-  alien = new Sprite(500,700,40,40, 'd');
-
-  alien.vel.x = 8;
-
-  alien.vel.y = 4;
-
-  alien.bounciness = 1;
-
-  alien.friction = 0;
-
-  alien.drag = 0;
-
-
-  alienGroup.add(alien);
-}
-}
-
-function kill( _ssss, _ball) {
-	//kill
-	_ssss.remove();
-
-
-	_ball.physics = 'k';
-	_ball.physics = 'd';
-// ask why this makes a difference
-
-}
-
+let state = notStarted;
+let startTimer = 3;
+let frame = 0;
+let score = 0;
+let speedPercent;
 /*******************************************************/
 // draw()
 /*******************************************************/
@@ -155,47 +116,44 @@ function draw() {
 
 	background(imgBG);  
 
-	if (kb.pressing('left')) {
+	fill('white');
 
-		ball.vel.x = -5;
+	textSize(50);
+
+	text('score: '+score,windowWidth/100,windowHeight/15);
+
+	text('click to start',windowWidth/3, windowHeight/2);
+	
 
 
-	} else if (kb.pressing ('right')) {
-
-		ball.vel.x = 5;
-       
-
-	};
-
-	if (kb.released('left')) {
-
-	ball.vel.x = 0;
-
-	} else if (kb.released('right')) {
-
-		ball.vel.x = 0;
+	if (state==started) { 
+	runFrame();
 	}
 
-	if (kb.pressing('up')) {
 
-		ball.vel.y = -5;
-
-
-	} else if (kb.pressing ('down')) {
-
-		ball.vel.y = 5;
 	}
 
-	if (kb.released('up')) {
+	function runFrame() {
+		let x = mouseX-ball.x;
 
-	ball.vel.y = 0;
 
-	} else if (kb.released('down')) {
 
-		ball.vel.y = 0;
+	let y = mouseY-ball.y;
+
+	
+	frame++;
+
+
+speedPercent = 0.000435*frame**0.511+0.05
+
+	ball.moveTowards(ball.x-x,ball.y-y, speedPercent);
+
+
+	score = floor(frame/60);
+	console.log(frame);
+	console.log(speedPercent);
+	
 	}
-}
-
 
 /*******************************************************/
 //  END OF APP
