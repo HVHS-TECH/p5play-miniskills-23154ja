@@ -145,7 +145,8 @@ function kill( _ssss, _ball) {
 // ask why this makes a difference
 
 }
-
+let temp = 0;
+let speedPercent;
 /*******************************************************/
 // draw()
 /*******************************************************/
@@ -169,9 +170,16 @@ function draw() {
 
 	let y = mouseY-ball.y;
 
-
-	ball.moveTowards(ball.x-x,ball.y-y, 0.05);
 	
+
+speedPercent = 0.000435*temp**0.511+0.05
+
+	ball.moveTowards(ball.x-x,ball.y-y, speedPercent);
+
+	console.log(temp);
+	console.log(speedPercent);
+	
+	temp++;
 	}
 }
 
