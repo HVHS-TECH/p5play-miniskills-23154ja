@@ -32,8 +32,14 @@ function draw() {
 
     var timer = Math.floor(millis()/1000);
 
-    text(timer, windowWidth/2, windowHeight/2);
+    textSize(100);
 
+    fill("green");
+
+    text(timer, windowWidth/2, windowHeight/2);
+    
+    fill("black");
+    textSize(12);
     
 }
 
