@@ -102,7 +102,7 @@ function drawWalls() {
 
 }
 
-let state = notStarted;
+let state = 'started';
 let startTimer = 3;
 let frame = 0;
 let score = 0;
@@ -126,7 +126,7 @@ function draw() {
 	
 
 
-	if (state==started) { 
+	if (state=='started') { 
 	runFrame();
 	}
 
