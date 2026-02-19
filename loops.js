@@ -42,7 +42,7 @@ function draw() {
 			
 			let spriteColor = color(255*(mouseX/windowWidth), 12.75*j, 25.5*i)
 			
-		var block = new Sprite(j*80 + 40, i*80 + 40, 50, 50);
+		var block = new Sprite(j*80 + (windowWidth-1640)/2, i*80 + 40, 50, 50);
  	 	block.color = spriteColor; // Red color
 
 		}
