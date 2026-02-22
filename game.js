@@ -13,6 +13,13 @@ function preload() {
   imgFace = loadImage('../assets/images/face.png');
 
 }
+// drawloop variables
+
+let state = 'notStarted';
+let timerTime;
+let frame = 0;
+let score = 0;
+let speedPercent;
 
 
 /*******************************************************/
@@ -23,10 +30,8 @@ function setup() {
 	console.log("setup: ");
 
 	cnv = new Canvas(windowWidth, windowHeight);
-	//world.gravity.y = 10;
 
 
-	drawWalls();
 
 
 	ball = new Sprite(width/2, height/2, 50, 'd');
@@ -49,11 +54,15 @@ function setup() {
 	imgFace.resize(50, 50);
 
 	
-	
+		drawWalls();
+
 	}
 	
 function drawWalls() {
 
+	walls = new Group();
+
+	walls.collides(ball, hitWall);
 
 
 	wallLH  = new Sprite(0, windowHeight/2, 8, windowHeight, 'k');
@@ -63,50 +72,54 @@ function drawWalls() {
 	wallLH.bounciness = 0;
 	wallLH.friction = 0;
 	wallLH.drag = 0;
-
+	walls.add(wallLH);
 
 
 
 	wallRH  = new Sprite(windowWidth, windowHeight/2, 8, windowHeight, 'k');
 
-	wallRH.color = 'green';
+	wallRH.color = 'black';
 
 	wallRH.bounciness = 0;
 	wallRH.friction = 0;
 	wallRH.drag = 0;
+	walls.add(wallRH);
 
 
 
 
-	wallTop = new Sprite(windowWidth/2, 0, windowWidth, 8, 'k');
+	wallTop = new Sprite(windowWidth/2, 75, windowWidth, 8, 'k');
 
-	wallTop.color = 'blue';
+	wallTop.color = 'grey';
 
 	wallTop.bounciness = 0;
 	wallTop.friction = 0;
 	wallTop.drag = 0;
-
-
+	walls.add(wallTop);
 
 
 
 
 	wallBottom = new Sprite(windowWidth/2, windowHeight, windowWidth, 8, 'k');
 
-	wallBottom.color = 'red';
+	wallBottom.color = 'black';
 
 	wallBottom.bounciness = 0;
 	wallBottom.friction = 0;
 	wallBottom.drag = 0;
-	//wallBot = new Sprite(x, y, w, h, 'k');
+	walls.add(wallBottom);
+
+
 
 }
 
-let state = 'started';
-let startTimer = 3;
-let frame = 0;
-let score = 0;
-let speedPercent;
+function hitWall( _ssss, _ball) {
+	
+	state = 'hitWall';
+	
+
+}
+
 /*******************************************************/
 // draw()
 /*******************************************************/
@@ -116,21 +129,52 @@ function draw() {
 
 	background(imgBG);  
 
+
+	fill('black');
+
+	rect(0, 0, windowWidth, 75);
+
 	fill('white');
 
 	textSize(50);
 
-	text('score: '+score,windowWidth/100,windowHeight/15);
-
-	text('click to start',windowWidth/3, windowHeight/2);
+	text('score: '+score,windowWidth/100,windowHeight/14);
 	
 
 
-	if (state=='started') { 
-	runFrame();
+	if (state=="notStarted") {
+
+		text('click to start',windowWidth/5, windowHeight/2);
+
+		if (mouse.pressing()) {
+
+			state = 'intermition';
+
+			timerTime = millis() + 3000;
+
+		}
 	}
 
 
+	if (state=='intermition') {
+
+		if (timerTime <= millis()) {
+
+			state = 'started';
+		}
+
+		text(Math.ceil((timerTime-millis())/1000), windowWidth/3, windowHeight/2)
+
+	}	
+
+
+	if (state=='started') { 
+		runFrame();
+		
+	}
+
+
+console.log(state);
 	}
 
 	function runFrame() {
@@ -144,14 +188,12 @@ function draw() {
 	frame++;
 
 
-speedPercent = 0.000435*frame**0.511+0.05
+	speedPercent = 0.000435*frame**0.511+0.05
 
 	ball.moveTowards(ball.x-x,ball.y-y, speedPercent);
 
 
-	score = floor(frame/60);
-	console.log(frame);
-	console.log(speedPercent);
+	score = floor(frame/6);
 	
 	}
 
