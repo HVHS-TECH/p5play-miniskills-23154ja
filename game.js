@@ -116,7 +116,8 @@ function drawWalls() {
 function hitWall( _ssss, _ball) {
 	
 	state = 'hitWall';
-	
+	ball.vel.x=0;
+	ball.vel.y=0;
 
 }
 
